@@ -1,0 +1,1 @@
+winget install -s winget Nvidia.CUDA

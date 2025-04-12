@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: always
+    ports:
+      - "12000:8080"
+    volumes:
+      - open-webui:/app/backend/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  
+  kokoro-fastapi-gpu:
+        ports:
+            - 12001:8880
+        image: ghcr.io/remsky/kokoro-fastapi-gpu:v0.2.1
+        restart: always
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities:
+                              - gpu
+        environment:
+          NVIDIA_DISABLE_REQUIRE: "1" # https://github.com/NVIDIA/nvidia-container-toolkit/issues/148
+
+volumes:
+  open-webui:
