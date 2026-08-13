@@ -1,6 +1,8 @@
+
+
 # My Local AI Setup
 
-**Eventhing you see in the Video is running locally on a RTX 3060 Laptop GPU:**
+**Everything you see in the Video is running locally on a RTX 3060 Laptop GPU:**
 
 https://github.com/user-attachments/assets/ec261500-7c0e-4c56-af99-a6aed08421d4
 
